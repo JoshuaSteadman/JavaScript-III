@@ -31,6 +31,7 @@ GameObject.prototype.destroy = function(){
 */
 function CharacterStats(attr){
   this.healthPoints = attr.healthPoints
+  GameObject.call(this, attr)
 }
 CharacterStats.prototype = Object.create(GameObject.prototype);
 CharacterStats.prototype.takeDamage = function(){
@@ -46,6 +47,7 @@ CharacterStats.prototype.takeDamage = function(){
   * should inherit takeDamage() from CharacterStats
 */
 function Humanoid(attr){
+  CharacterStats.call(this, attr);
   this.team = attr.team,
   this.weapons = attr.weapons,
   this.language = attr.language
@@ -115,7 +117,6 @@ Humanoid.prototype.greet = function(){
   });
 
   console.log(mage.createdAt); // Today's date
-  debugger;
   console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
   console.log(swordsman.healthPoints); // 15
   console.log(mage.name); // Bruce
